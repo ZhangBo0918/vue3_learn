@@ -19,7 +19,11 @@ const tableData = reactive([
   }
 ])
 
-const formInline = reactive({
+interface FormInLine {
+  [key: string]: string
+}
+
+const formInline:FormInLine = reactive({
   product: '',
   count: '',
   price: '',
