@@ -6,9 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "json-server --watch .\\public\\db.json --port 8848"
   },
   "dependencies": {
+    "axios": "^1.2.0",
+    "json-server": "^0.17.1",
+    "marked": "^4.2.3",
+    "nanoid": "^4.0.0",
     "vue": "^3.2.37"
   },
   "devDependencies": {
