@@ -1,5 +1,18 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+
+withDefaults(defineProps<{
+  msg: string
+}>(), {
+  msg: "快点击按钮"
+})
+
+const emit = defineEmits(['send-father']);
+
+defineExpose({
+  name: "Aibo Chang"
+})
 
 const tableData = reactive([
   {
@@ -23,7 +36,7 @@ interface FormInLine {
   [key: string]: string
 }
 
-const formInline:FormInLine = reactive({
+const formInline: FormInLine = reactive({
   product: '',
   count: '',
   price: '',
@@ -53,10 +66,32 @@ const changeItem = (scope: any, type: 1 | 0 | -1) => {
   dealFunc[type]()
 }
 
+const open = () => {
+  ElMessageBox.prompt('请输入信息', {
+    confirmButtonText: '确定',
+    cancelButtonText: '退出',
+    inputPattern:
+      /^[a-zA-Z0-9]+$/,
+    inputErrorMessage: '字符串含有非字母和数字外的特殊字符',
+  })
+    .then(({ value }) => {
+      emit('send-father', value);
+      ElMessage({
+        type: 'success',
+        message: `你的输入值为：${value}`,
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '退出输入',
+      })
+    })
+}
 </script>
 
 <template>
-  <div>
+  <div class="shop-chart">
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-form-item label="商品名">
         <el-input v-model="formInline.product" placeholder="请输入商品名" />
@@ -90,9 +125,19 @@ const changeItem = (scope: any, type: 1 | 0 | -1) => {
         </template>
       </el-table-column>
     </el-table>
+    <div class="blank"></div>
+    <el-button type="success" @click="open">{{ msg }}</el-button>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="less">
+.shop-chart {
+  height: 50vh;
+  background-color: cadetblue;
+  padding: 20px;
 
+  &>.blank {
+    height: 100px;
+  }
+}
 </style>
