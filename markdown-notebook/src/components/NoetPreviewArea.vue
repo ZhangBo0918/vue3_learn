@@ -1,5 +1,7 @@
 <template>
-    
+  <div>
+    world
+  </div>
 </template>
   
 <script setup lang='ts'>
