@@ -1,12 +1,18 @@
-import { createWebHistory } from 'vue-router'
-import HomeVue from '../views/Home/index.vue'
-import MineVue from '../views/Mine/index.vue'
+import { createWebHistory, RouteRecordRaw, createRouter } from 'vue-router'
 
-const routes = [
+const routes:Array<RouteRecordRaw> = [
   {
-    
+    path: '/',
+    component: () => import('../views/Home/index.vue')
+  },
+  {
+    path: '/mine',
+    component: () => import('../views/Mine/index.vue')
   }
 ];
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
 
-
-export default routes
+export default router

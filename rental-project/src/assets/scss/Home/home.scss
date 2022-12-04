@@ -1,0 +1,9 @@
+div {
+  color: $red;
+}
+
+.text {
+  width: 200px;
+  background-color: aquamarine;
+  @include line-text-overflow;
+}
