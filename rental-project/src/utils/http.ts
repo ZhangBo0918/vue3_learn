@@ -97,6 +97,13 @@ class Http {
       .then((res) => res.data)
       .catch();
   }
+  //3.delete请求
+  public httpRequestDelete(url: string, id: AxiosRequestConfig) {
+    return Http.axiosInstance
+      .delete(url, id)
+      .then((res) => res.data)
+      .catch();
+  }
 }
 
 export const http = new Http();

@@ -1,9 +1,18 @@
 // https://api.vvhan.com/api/view 随机风景照
-// https://api.uomg.com/api/rand.img1?sort=美女&format=json
 //https://api.vvhan.com/api/bing?type=json
 
 import { http } from "../utils/http";
 
-export function getRandomView() {
-  return http.httpRequestGet("https://api.vvhan.com/api/bing?type=json", {});
+const commonUrl = 'http://localhost:8848/';
+
+export function getData(url: string, param: any) {
+  return http.httpRequestGet(commonUrl + url, param);
+}
+
+export function postData(url:string, param:any) {
+  return http.httpRequestPost(commonUrl + url, param);
+}
+
+export function deleteHistory(url: string, param:any) {
+  return http.httpRequestDelete(commonUrl + url, param);
 }

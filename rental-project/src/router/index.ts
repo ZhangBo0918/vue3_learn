@@ -8,6 +8,10 @@ const routes:Array<RouteRecordRaw> = [
   {
     path: '/mine',
     component: () => import('../views/Mine/index.vue')
+  },
+  {
+    path: '/login',
+    component: () => import('../views/Login/index.vue')
   }
 ];
 const router = createRouter({
